@@ -276,3 +276,103 @@ Merge con master de un fork
 	git fetch upstream
 	git merge upstream/master
 ```
+
+## Patch
+```
+El comando git patch es una herramienta poderosa en Git que te permite crear y aplicar parches a tu código. Un parche, en este contexto, es un conjunto de cambios específicos que se pueden aplicar a un proyecto de manera aislada.
+
+Principales usos:
+
+Compartir cambios específicos: Si quieres compartir solo una parte de tus cambios con alguien más, puedes crear un parche y enviárselo.
+Revisar cambios antes de integrarlos: Puedes aplicar un parche de forma experimental para ver cómo afecta a tu código antes de fusionarlo.
+Revertir cambios: Puedes crear un parche para revertir cambios específicos y luego aplicarlo.
+Integrar cambios de otros: Si alguien te envía un parche, puedes aplicarlo a tu repositorio para incorporar sus cambios.
+¿Cómo se utiliza git patch?
+Crear un parche:
+
+Identifica los cambios: Decide qué cambios quieres incluir en el parche. Puedes usar git diff para ver las diferencias entre dos commits o entre tu directorio de trabajo y el último commit.
+
+### Ejemplo de uso
+
+git format-patch <commit_inicial>..<commit_final>
+
+El comando anterior creará uno o más archivos .patch que contienen las diferencias entre los commits especificados.
+Aplicar un parche:
+
+1. Ubicar el parche: Asegúrate de tener el archivo .patch en el directorio donde quieres aplicar los cambios.
+2. Aplicar el parche:
+git apply <nombre_del_parche.patch>
+
+Este comando aplicará los cambios del parche a tu directorio de trabajo.
+Ejemplo:
+
+Supongamos que quieres crear un parche para los cambios realizados entre los commits HEAD~2 y HEAD. Luego, quieres aplicar ese parche a una rama diferente:
+# Crear el parche
+git format-patch HEAD~2..HEAD
+
+# Cambiar a la otra rama
+git checkout otra_rama
+
+# Aplicar el parche
+git apply 0001-mis-cambios.patch
+
+¿Para qué sirve el comando git patch?
+El comando git patch es una herramienta poderosa en Git que te permite crear y aplicar parches a tu código. Un parche, en este contexto, es un conjunto de cambios específicos que se pueden aplicar a un proyecto de manera aislada.
+
+Principales usos:
+
+Compartir cambios específicos: Si quieres compartir solo una parte de tus cambios con alguien más, puedes crear un parche y enviárselo.
+Revisar cambios antes de integrarlos: Puedes aplicar un parche de forma experimental para ver cómo afecta a tu código antes de fusionarlo.
+Revertir cambios: Puedes crear un parche para revertir cambios específicos y luego aplicarlo.
+Integrar cambios de otros: Si alguien te envía un parche, puedes aplicarlo a tu repositorio para incorporar sus cambios.
+¿Cómo se utiliza git patch?
+Crear un parche:
+
+Identifica los cambios: Decide qué cambios quieres incluir en el parche. Puedes usar git diff para ver las diferencias entre dos commits o entre tu directorio de trabajo y el último commit.
+Crea el parche:
+Bash
+git format-patch <commit_inicial>..<commit_final>
+Usa el código con precaución.
+
+Este comando creará uno o más archivos .patch que contienen las diferencias entre los commits especificados.
+Aplicar un parche:
+
+Ubicar el parche: Asegúrate de tener el archivo .patch en el directorio donde quieres aplicar los cambios.
+Aplicar el parche:
+Bash
+git apply <nombre_del_parche.patch>
+Usa el código con precaución.
+
+Este comando aplicará los cambios del parche a tu directorio de trabajo.
+Ejemplo:
+
+Supongamos que quieres crear un parche para los cambios realizados entre los commits HEAD~2 y HEAD. Luego, quieres aplicar ese parche a una rama diferente:
+
+Bash
+# Crear el parche
+git format-patch HEAD~2..HEAD
+
+# Cambiar a la otra rama
+git checkout otra_rama
+
+# Aplicar el parche
+git apply 0001-mis-cambios.patch
+Usa el código con precaución.
+
+Opciones adicionales:
+
+git am: Este comando es similar a git apply, pero está diseñado para aplicar parches creados con git format-patch. Ofrece más opciones de manejo de conflictos y registro de los cambios aplicados.
+git diff: Puedes usar git diff con la opción -p para generar un parche en formato unificado, que es más compatible con otras herramientas.
+git apply --check: Esta opción te permite verificar si un parche se puede aplicar sin realizar cambios en tu directorio de trabajo.
+Consideraciones importantes:
+
+Conflictos: Si los cambios en el parche entran en conflicto con los cambios existentes en tu directorio de trabajo, git apply se detendrá y tendrás que resolver los conflictos manualmente.
+Formatos de parche: Existen diferentes formatos de parche (unificado, contexto, etc.). Asegúrate de utilizar el formato correcto al crear y aplicar parches.
+Herramientas de terceros: Existen herramientas de terceros que facilitan la creación y aplicación de parches, como patch.
+En resumen:
+
+El comando git patch es una herramienta versátil que te permite trabajar con cambios de manera granular. Ya sea para compartir código, revisar cambios o revertir modificaciones, los parches son una parte fundamental del flujo de trabajo de Git.
+
+
+```
+
